@@ -1,6 +1,15 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import CharacterCards from '../components/CharacterCards'
+import styled from 'styled-components'
+
+const Container = styled.div`
+    // border: 2px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0);
+    justify-content: center
+`
 
 export default function StarWarsList() {
 
@@ -21,24 +30,22 @@ export default function StarWarsList() {
     }, [])
 
     return(
-        <div className='Container'>
-            <div className='Character'>
-                {char.map((item, index) => {
-                    return (
-                        <CharacterCards 
-                            key={index}
-                            name={item.name}
-                            birth_year={item.birth_year}
-                            height={item.height}
-                            mass={item.mass}
-                            vehicles={item.vehicles.length}
-                            films={item.films.length}
-                            starships={item.starships.length}
-                        />
-                    )
-                })}
-            </div>
-        </div>
+        <Container>
+            {char.map((item, index) => {
+                return (
+                    <CharacterCards 
+                        key={index}
+                        name={item.name}
+                        birth_year={item.birth_year}
+                        height={item.height}
+                        mass={item.mass}
+                        vehicles={item.vehicles.length}
+                        films={item.films.length}
+                        starships={item.starships.length}
+                    />
+                )
+            })}
+        </Container>
     )
 }
 
